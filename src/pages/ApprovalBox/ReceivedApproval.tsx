@@ -22,63 +22,9 @@ const columns: Column[] = [
 ]
 
 const initialData: DataRow[] = [
-{
-id: 1,
-date: "2025-05-30",
-type: "예산계획서",
-content: "안전보건 예산 및 인력계획 결재 요청",
-drafter: "박관리",
-status: "결재완료",
-sign: (
-<span className="flex justify-center items-center">
-<EyeIcon
-size={19}
-aria-label="결재내용 보기"
-role="button"
-tabIndex={0}
-className="cursor-pointer"
-/>
-</span>
-)
-},
-{
-id: 2,
-date: "2025-05-19",
-type: "점검계획서",
-content: "정기 자체점검 계획 결재 요청",
-drafter: "박안전",
-status: "결재대기",
-sign: (
-<span className="flex justify-center items-center">
-<ClipboardPenIcon
-size={19}
-aria-label="서명하기"
-role="button"
-tabIndex={0}
-className="cursor-pointer"
-/>
-</span>
-)
-},
-{
-id: 3,
-date: "2025-05-11",
-type: "위험요인개선",
-content: "유해·위험요인 개선계획 결재 요청",
-drafter: "박근로",
-status: "결재대기",
-sign: (
-<span className="flex justify-center items-center">
-<ClipboardPenIcon
-size={19}
-aria-label="서명하기"
-role="button"
-tabIndex={0}
-className="cursor-pointer"
-/>
-</span>
-)
-}
+{ id: 1, date: "2025-05-30", type: "예산계획서", content: "안전보건 예산 및 인력계획 결재 요청", drafter: "박관리", status: "결재완료", sign: <span className="flex justify-center items-center"><EyeIcon size={19} aria-label="결재내용 보기" role="button" tabIndex={0} className="cursor-pointer" /></span> },
+{ id: 2, date: "2025-05-19", type: "점검계획서", content: "정기 자체점검 계획 결재 요청", drafter: "박안전", status: "결재대기", sign: <span className="flex justify-center items-center"><ClipboardPenIcon size={19} aria-label="서명하기" role="button" tabIndex={0} className="cursor-pointer" /></span> },
+{ id: 3, date: "2025-05-11", type: "위험요인개선", content: "유해·위험요인 개선계획 결재 요청", drafter: "박근로", status: "결재대기", sign: <span className="flex justify-center items-center"><ClipboardPenIcon size={19} aria-label="서명하기" role="button" tabIndex={0} className="cursor-pointer" /></span> }
 ]
 
 function StatusCell({ status }: { status: string }) {
@@ -92,64 +38,37 @@ const navigate = useNavigate()
 const currentPath = window.location.pathname
 const currentTabIdx = TAB_PATHS.findIndex(path => currentPath.startsWith(path))
 const activeIndex = currentTabIdx === -1 ? 0 : currentTabIdx
-
 const [data, setData] = React.useState<DataRow[]>(initialData)
 const [keyword, setKeyword] = React.useState("")
 const [startDate, setStartDate] = React.useState("2025-06-16")
 const [endDate, setEndDate] = React.useState("2025-12-16")
-const [checkedIds, setCheckedIds] = React.useState<(number | string)[]>([])
+const [checkedIds, setCheckedIds] = React.useState<(number|string)[]>([])
 
-const handleTabClick = (idx: number) => {
-navigate(TAB_PATHS[idx])
-setCheckedIds([])
-}
-
+const handleTabClick = (idx: number) => { navigate(TAB_PATHS[idx]); setCheckedIds([]) }
 const handleSearch = () => {}
-
 const handlePrint = () => window.print()
-
 const handleDelete = () => {
-if (checkedIds.length === 0) {
-alert("삭제할 항목을 선택하세요")
-return
-}
+if (checkedIds.length === 0) { alert("삭제할 항목을 선택하세요"); return }
 if (window.confirm("정말 삭제하시겠습니까?")) {
 setData(prev => prev.filter(row => !checkedIds.includes(row.id)))
 setCheckedIds([])
 }
 }
 
-const renderCell = (row: DataRow, col: Column) => {
-if (col.key === "status") return <StatusCell status={row.status as string} />
-return row[col.key]
-}
+const renderCell = (row: DataRow, col: Column) => col.key === "status" ? <StatusCell status={row.status as string} /> : row[col.key]
 
 return (
 <section className="received-approval-content w-full bg-white">
 <PageTitle>{TAB_LABELS[activeIndex]}</PageTitle>
 <TabMenu tabs={TAB_LABELS} activeIndex={activeIndex} onTabClick={handleTabClick} className="mb-6" />
-<div className="mb-4">
-<FilterBar
-startDate={startDate}
-endDate={endDate}
-onStartDate={setStartDate}
-onEndDate={setEndDate}
-keyword={keyword}
-onKeywordChange={setKeyword}
-onSearch={handleSearch}
-/>
+<div className="mb-3">
+<FilterBar startDate={startDate} endDate={endDate} onStartDate={setStartDate} onEndDate={setEndDate} keyword={keyword} onKeywordChange={setKeyword} onSearch={handleSearch} />
 </div>
 <div className="flex justify-between items-center mb-3">
 <span className="text-gray-600 text-sm">총 {data.length}건</span>
-<div className="flex justify-end gap-2">
-<Button variant="action" onClick={handlePrint} className="flex items-center gap-2">
-<Printer size={16} />
-인쇄
-</Button>
-<Button variant="action" onClick={handleDelete} className="flex items-center gap-2">
-<Trash2 size={16} />
-삭제
-</Button>
+<div className="flex justify-end gap-1">
+<Button variant="action" onClick={handlePrint} className="flex items-center gap-1"><Printer size={16} />인쇄</Button>
+<Button variant="action" onClick={handleDelete} className="flex items-center gap-1"><Trash2 size={16} />삭제</Button>
 </div>
 </div>
 <div className="overflow-x-auto bg-white">

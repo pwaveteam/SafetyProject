@@ -3,10 +3,7 @@ import ReactQuill from "react-quill"
 import "react-quill/dist/quill.snow.css"
 
 type Props = {
-value: string
-onChange: (value: string) => void
-className?: string
-placeholder?: string
+value: string; onChange: (value: string) => void; className?: string; placeholder?: string
 }
 
 const modules = {
@@ -15,8 +12,8 @@ toolbar: [
 ["bold", "italic", "underline", "strike"],
 [{ list: "ordered" }, { list: "bullet" }],
 ["link", "image"],
-["clean"],
-],
+["clean"]
+]
 }
 
 export default function WysiwygEditor({ value, onChange, className = "", placeholder }: Props) {

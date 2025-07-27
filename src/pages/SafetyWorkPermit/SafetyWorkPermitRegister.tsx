@@ -1,4 +1,3 @@
-// src/pages/AssetManagement/SafetyWorkPermitRegister.tsx
 import React, { useState } from "react"
 import Button from "@/components/common/Button"
 import FormScreen, { Field } from "@/components/common/FormScreen"
@@ -7,23 +6,9 @@ import RadioGroup from "@/components/common/RadioGroup"
 type Props = { isOpen: boolean; onClose: () => void; onSave: (data: any) => void }
 
 export default function SafetyWorkPermitRegister({ isOpen, onClose, onSave }: Props) {
-const [formData, setFormData] = useState({
-workType: "",
-workContent: "",
-hazardFactors: "",
-hazardLevel: "높음",
-safetyPlan: "",
-workLocation: "",
-startDate: "",
-endDate: "",
-workerCount: "",
-attachment: null as File | null,
-note: "",
-})
+const [formData, setFormData] = useState({ workType: "", workContent: "", hazardFactors: "", hazardLevel: "높음", safetyPlan: "", workLocation: "", startDate: "", endDate: "", workerCount: "", attachment: null as File | null, note: "" })
 
-const handleChange = (
-e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>
-) => {
+const handleChange = (e: React.ChangeEvent<HTMLInputElement|HTMLSelectElement|HTMLTextAreaElement>) => {
 const { name, value, type, files } = e.target as HTMLInputElement
 if (name === "workerCount" && value !== "" && !/^\d+$/.test(value)) return
 if (type === "file") {
@@ -45,38 +30,14 @@ const fields: Field[] = [
 { label: "작업유형", name: "workType", type: "select", options: workTypeOptions, placeholder: "작업유형 선택" },
 { label: "작업내용", name: "workContent", type: "textarea", placeholder: "작업내용 입력" },
 { label: "잠재 위험요소", name: "hazardFactors", type: "text", placeholder: "잠재 위험요소 입력" },
-{
-label: "위험수준",
-name: "hazardLevel",
-type: "custom",
-customRender: (
-<RadioGroup
-name="hazardLevel"
-value={formData.hazardLevel}
-options={[
-{ value: "높음", label: "높음" },
-{ value: "중간", label: "중간" },
-{ value: "낮음", label: "낮음" },
-]}
-onChange={handleChange}
-/>
-)
-},
+{ label: "위험수준", name: "hazardLevel", type: "custom", customRender: (<RadioGroup name="hazardLevel" value={formData.hazardLevel} options={[{ value: "높음", label: "높음" },{ value: "중간", label: "중간" },{ value: "낮음", label: "낮음" }]} onChange={handleChange} />) },
 { label: "안전조치 계획", name: "safetyPlan", type: "textarea", placeholder: "작업내용 입력" },
 { label: "작업장소", name: "workLocation", type: "text", placeholder: "작업장소 입력" },
-{
-label: "작업기간",
-name: "workPeriod",
-type: "daterange"
-},
-{
-label: "작업시간",
-name: "workTime",
-type: "timeRange"
-},
+{ label: "작업기간", name: "workPeriod", type: "daterange" },
+{ label: "작업시간", name: "workTime", type: "timeRange" },
 { label: "작업인원", name: "workerCount", type: "quantity", placeholder: "인원수 입력" },
 { label: "비고", name: "note", type: "textarea", placeholder: "비고 입력" },
-{ label: "첨부파일", name: "attachment", type: "fileUpload" },
+{ label: "첨부파일", name: "fileUpload", type: "fileUpload" },
 ]
 
 if (!isOpen) return null
@@ -87,19 +48,7 @@ return (
 <h2 className="text-2xl font-semibold tracking-wide mb-3">안전작업허가서 등록</h2>
 <FormScreen
 fields={fields}
-values={{
-workType: formData.workType,
-workContent: formData.workContent,
-hazardFactors: formData.hazardFactors,
-hazardLevel: formData.hazardLevel,
-safetyPlan: formData.safetyPlan,
-workLocation: formData.workLocation,
-startDate: formData.startDate,
-endDate: formData.endDate,
-workerCount: formData.workerCount,
-attachment: formData.attachment?.name || "",
-note: formData.note,
-}}
+values={{ ...formData, attachment: formData.attachment?.name || "" }}
 onChange={handleChange}
 onClose={onClose}
 onSave={() => onSave(formData)}

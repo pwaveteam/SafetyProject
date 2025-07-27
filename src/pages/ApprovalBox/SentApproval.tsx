@@ -19,60 +19,9 @@ const columns: Column[] = [
 ]
 
 const initialData: DataRow[] = [
-{
-id: 1,
-date: "2025-05-30",
-document: "안전보건관리체계 구축계획서",
-status: "진행",
-progress: "1/3",
-finalApprover: "최관리",
-detail: (
-<span
-className="flex justify-center items-center cursor-pointer"
-role="button"
-tabIndex={0}
-aria-label="상세보기"
->
-<EyeIcon size={19} />
-</span>
-)
-},
-{
-id: 2,
-date: "2025-05-19",
-document: "자체점검 계획서",
-status: "완료",
-progress: "3/3",
-finalApprover: "이대표",
-detail: (
-<span
-className="flex justify-center items-center cursor-pointer"
-role="button"
-tabIndex={0}
-aria-label="상세보기"
->
-<EyeIcon size={19} />
-</span>
-)
-},
-{
-id: 3,
-date: "2025-05-11",
-document: "안전보건 예산 및 인력확보 계획서",
-status: "대기",
-progress: "0/3",
-finalApprover: "김관리",
-detail: (
-<span
-className="flex justify-center items-center cursor-pointer"
-role="button"
-tabIndex={0}
-aria-label="상세보기"
->
-<EyeIcon size={19} />
-</span>
-)
-}
+{ id: 1, date: "2025-05-30", document: "안전보건관리체계 구축계획서", status: "진행", progress: "1/3", finalApprover: "최관리", detail: <span className="flex justify-center items-center cursor-pointer" role="button" tabIndex={0} aria-label="상세보기"><EyeIcon size={19} /></span> },
+{ id: 2, date: "2025-05-19", document: "자체점검 계획서", status: "완료", progress: "3/3", finalApprover: "이대표", detail: <span className="flex justify-center items-center cursor-pointer" role="button" tabIndex={0} aria-label="상세보기"><EyeIcon size={19} /></span> },
+{ id: 3, date: "2025-05-11", document: "안전보건 예산 및 인력확보 계획서", status: "대기", progress: "0/3", finalApprover: "김관리", detail: <span className="flex justify-center items-center cursor-pointer" role="button" tabIndex={0} aria-label="상세보기"><EyeIcon size={19} /></span> }
 ]
 
 function StatusCell({ status }: { status: string }) {
@@ -89,71 +38,36 @@ const [data, setData] = React.useState<DataRow[]>(initialData)
 const [keyword, setKeyword] = React.useState("")
 const [startDate, setStartDate] = React.useState("2025-06-16")
 const [endDate, setEndDate] = React.useState("2025-12-16")
-const [checkedIds, setCheckedIds] = React.useState<(number | string)[]>([])
+const [checkedIds, setCheckedIds] = React.useState<(number|string)[]>([])
+const currentTabIdx = 1
 
-const currentTabIdx = 1 // '보낸결재함' 고정 인덱스
-
-const handleTabClick = (idx: number) => {
-if (idx === 0) navigate("/approval-box/received")
-else if (idx === 1) navigate("/approval-box/sent")
-setCheckedIds([])
-}
-
+const handleTabClick = (idx: number) => { if (idx === 0) navigate("/approval-box/received"); else if (idx === 1) navigate("/approval-box/sent"); setCheckedIds([]) }
 const handleSearch = () => {}
-
 const handlePrint = () => window.print()
-
 const handleDelete = () => {
-if (checkedIds.length === 0) {
-alert("삭제할 항목을 선택하세요")
-return
-}
+if (checkedIds.length === 0) { alert("삭제할 항목을 선택하세요"); return }
 if (window.confirm("정말 삭제하시겠습니까?")) {
 setData(prev => prev.filter(row => !checkedIds.includes(row.id)))
 setCheckedIds([])
 }
 }
 
-const renderCell = (row: DataRow, col: Column) => {
-if (col.key === "status") return <StatusCell status={row.status as string} />
-return row[col.key]
-}
+const renderCell = (row: DataRow, col: Column) => col.key === "status" ? <StatusCell status={row.status as string} /> : row[col.key]
 
 return (
 <section className="sent-approval-content w-full bg-white">
 <PageTitle>보낸결재함</PageTitle>
-<TabMenu
-tabs={["받은결재함", "보낸결재함"]}
-activeIndex={currentTabIdx}
-onTabClick={handleTabClick}
-className="mb-6"
-/>
-<div className="mb-4">
-<FilterBar
-keyword={keyword}
-onKeywordChange={setKeyword}
-startDate={startDate}
-endDate={endDate}
-onStartDate={setStartDate}
-onEndDate={setEndDate}
-onSearch={handleSearch}
-/>
+<TabMenu tabs={["받은결재함", "보낸결재함"]} activeIndex={currentTabIdx} onTabClick={handleTabClick} className="mb-6" />
+<div className="mb-3">
+<FilterBar keyword={keyword} onKeywordChange={setKeyword} startDate={startDate} endDate={endDate} onStartDate={setStartDate} onEndDate={setEndDate} onSearch={handleSearch} />
 </div>
-
 <div className="flex justify-between items-center mb-3">
 <span className="text-gray-600 text-sm">총 {data.length}건</span>
-<div className="flex justify-end gap-2">
-<Button variant="action" onClick={handlePrint} className="flex items-center gap-2">
-<Printer size={16} />
-인쇄
-</Button>
-<Button variant="action" onClick={handleDelete} className="flex items-center gap-2">
-<Trash2 size={16} />
-삭제
-</Button>
+<div className="flex justify-end gap-1">
+<Button variant="action" onClick={handlePrint} className="flex items-center gap-1"><Printer size={16} />인쇄</Button>
+<Button variant="action" onClick={handleDelete} className="flex items-center gap-1"><Trash2 size={16} />삭제</Button>
 </div>
 </div>
-
 <div className="overflow-x-auto bg-white">
 <DataTable columns={columns} data={data} renderCell={renderCell} onCheckedChange={setCheckedIds} />
 </div>

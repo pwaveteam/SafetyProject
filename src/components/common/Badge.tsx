@@ -1,17 +1,6 @@
-// src/components/Badge.tsx
 import React from "react"
 
-type BadgeColor =
-| "gray"
-| "red"
-| "yellow"
-| "green"
-| "blue"
-| "purple"
-| "pink"
-| "sky"
-| "orange"
-| "bgRed"
+type BadgeColor = "gray" | "red" | "yellow" | "green" | "blue" | "purple" | "pink" | "sky" | "orange" | "bgRed"
 
 interface BadgeProps {
 color?: BadgeColor
@@ -31,37 +20,19 @@ pink: "bg-pink-50 text-pink-600",
 sky: "bg-sky-100 text-sky-600",
 green: "bg-green-100 text-green-800",
 orange: "bg-orange-50 text-orange-500",
-bgRed: "bg-red-600 text-white",
+bgRed: "bg-red-600 text-white"
 }
 
-const Badge: React.FC<BadgeProps> = ({
-color = "gray",
-children,
-selected = false,
-onClick,
-className = "",
-}) => {
-return (
+const Badge: React.FC<BadgeProps> = ({ color = "gray", children, onClick, className = "" }) => (
 <span
 role={onClick ? "button" : undefined}
 tabIndex={onClick ? 0 : undefined}
 onClick={onClick}
-onKeyDown={e => {
-if (onClick && (e.key === "Enter" || e.key === " ")) {
-e.preventDefault()
-onClick()
-}
-}}
-className={`inline-flex items-center rounded-full px-3 py-1
-font-medium text-sm
-cursor-pointer select-none
-${colorStyles[color]}
-text-xs md:text-sm
-${className}`}
+onKeyDown={e => { if (onClick && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); onClick() } }}
+className={`inline-flex items-center rounded-full px-3 py-1 font-medium text-sm cursor-pointer select-none text-xs md:text-sm ${colorStyles[color]} ${className}`}
 >
 {children}
 </span>
 )
-}
 
 export default Badge

@@ -16,7 +16,7 @@ title: "",
 author: userName || "",
 date: "",
 content: "",
-attachment: "",
+attachment: ""
 })
 
 useEffect(() => {
@@ -34,37 +34,18 @@ const fields: Field[] = [
 { label: "제목", name: "title", type: "text", placeholder: "제목 입력" },
 { label: "작성자", name: "author", type: "readonly" },
 { label: "작성일", name: "date", type: "date" },
-{
-label: "내용",
-name: "content",
-type: "custom",
-customRender: (
-<Editor
-value={formData.content}
-onChange={handleContentChange}
-className="min-h-[300px]"
-/>
-),
-},
-{ label: "첨부파일", name: "attachment", type: "fileUpload", placeholder: "첨부파일 선택" },
+{ label: "내용", name: "content", type: "custom", customRender: (<Editor value={formData.content} onChange={handleContentChange} className="min-h-[300px]" />) },
+{ label: "첨부파일", name: "fileUpload", type: "fileUpload" }
 ]
 
-const handleChange = (
-e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-) => {
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
 const { name, value } = e.target
 setFormData(prev => ({ ...prev, [name]: value }))
 }
 
 const handleSave = () => {
-if (!formData.title.trim()) {
-alert("제목을 입력하세요")
-return
-}
-if (!formData.content.trim()) {
-alert("내용을 입력하세요")
-return
-}
+if (!formData.title.trim()) return alert("제목을 입력하세요")
+if (!formData.content.trim()) return alert("내용을 입력하세요")
 onSave(formData)
 }
 

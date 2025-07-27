@@ -1,12 +1,7 @@
 import React, { useState, useEffect } from "react"
 
 export interface EditableCellProps {
-value: string
-onChange: (val: string) => void
-placeholder?: string
-className?: string
-maxLength?: number
-disabled?: boolean
+value: string; onChange: (val: string) => void; placeholder?: string; className?: string; maxLength?: number; disabled?: boolean
 }
 
 const EditableCell: React.FC<EditableCellProps> = ({
@@ -19,9 +14,7 @@ disabled = false,
 }) => {
 const [inputValue, setInputValue] = useState(value)
 
-useEffect(() => {
-setInputValue(value)
-}, [value])
+useEffect(() => { setInputValue(value) }, [value])
 
 const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 let val = e.target.value
@@ -30,13 +23,14 @@ setInputValue(val)
 onChange(val)
 }
 
-const containerStyle: React.CSSProperties = {
-width: "100%",
-paddingTop: 5,
-paddingBottom: 5,
-}
-
-const inputStyle: React.CSSProperties = {
+return (
+<div style={{ width: "100%", paddingTop: 5, paddingBottom: 5 }}>
+<input
+type="text"
+value={inputValue}
+onChange={handleChange}
+placeholder={placeholder}
+style={{
 width: "96%",
 height: 39,
 padding: "8px",
@@ -48,17 +42,8 @@ outline: "none",
 boxSizing: "border-box",
 backgroundColor: disabled ? "#f3f3f3" : "white",
 cursor: disabled ? "not-allowed" : "auto",
-textAlign: "left",
-}
-
-return (
-<div style={containerStyle}>
-<input
-type="text"
-value={inputValue}
-onChange={handleChange}
-placeholder={placeholder}
-style={inputStyle}
+textAlign: "left"
+}}
 className={className}
 disabled={disabled}
 />

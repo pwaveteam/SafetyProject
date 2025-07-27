@@ -42,7 +42,8 @@ fields={[
 { label: "참석자(도급인)", name: "attendeeClient", type: "text", placeholder: "도급인 참석자 입력", required: false },
 { label: "참석자(수급인)", name: "attendeeSubcontractor", type: "text", placeholder: "수급인 참석자 입력", required: false },
 { label: "회의내용", name: "note", type: "textarea", placeholder: "회의내용 입력", required: true },
-{ label: "회의록 업로드", name: "contractFile", type: "fileUpload", placeholder: "파일명 입력", required: true },
+{ label: "회의록", name: "contractFile", type: "fileUpload", placeholder: "파일명 입력", required: true },
+{ label: "첨부파일", name: "fileUpload", type: "fileUpload" },
 ]}
 values={formData}
 onChange={handleFormChange}

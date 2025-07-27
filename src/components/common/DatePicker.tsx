@@ -1,10 +1,7 @@
-// src/components/common/DatePicker.tsx
-import React from "react";
+import React from "react"
 
 interface DatePickerProps {
-value: string;
-onChange: (date: string) => void;
-placeholder?: string;
+value: string; onChange: (date: string) => void; placeholder?: string
 }
 
 const DatePicker: React.FC<DatePickerProps> = ({ value, onChange, placeholder }) => {
@@ -19,10 +16,10 @@ border: "1px solid #A0B3C9",
 borderRadius: 8,
 padding: "6px 10px",
 width: "139px",
-fontSize: "15px",
+fontSize: "15px"
 }}
 />
-);
-};
+)
+}
 
-export default DatePicker;
+export default DatePicker

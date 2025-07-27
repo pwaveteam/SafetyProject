@@ -16,57 +16,9 @@ const columns: Column[] = [
 ]
 
 const initialData: DataRow[] = [
-{
-id: 103,
-title: "『중대재해 처벌 등에 관한 법률 시행령』 일부개정령안 행정예고",
-organization: "고용노동부",
-date: "2025-06-28",
-attachment: (
-<span className="flex justify-center items-center">
-<DownloadIcon
-size={19}
-aria-label="첨부파일 다운로드"
-role="button"
-tabIndex={0}
-className="cursor-pointer"
-/>
-</span>
-)
-},
-{
-id: 102,
-title: "『중대재해 처벌법』 개정법률 공포 (2025.06.21 시행)",
-organization: "안전보건공단",
-date: "2025-06-21",
-attachment: (
-<span className="flex justify-center items-center">
-<DownloadIcon
-size={19}
-aria-label="첨부파일 다운로드"
-role="button"
-tabIndex={0}
-className="cursor-pointer"
-/>
-</span>
-)
-},
-{
-id: 101,
-title: "중대산업재해 발생 시 보고 및 조치 매뉴얼(제5차 개정판)",
-organization: "안전보건공단",
-date: "2025-06-19",
-attachment: (
-<span className="flex justify-center items-center">
-<DownloadIcon
-size={19}
-aria-label="첨부파일 다운로드"
-role="button"
-tabIndex={0}
-className="cursor-pointer"
-/>
-</span>
-)
-}
+{ id: 103, title: "『중대재해 처벌 등에 관한 법률 시행령』 일부개정령안 행정예고", organization: "고용노동부", date: "2025-06-28", attachment: (<span className="flex justify-center items-center"><DownloadIcon size={19} aria-label="첨부파일 다운로드" role="button" tabIndex={0} className="cursor-pointer" /></span>) },
+{ id: 102, title: "『중대재해 처벌법』 개정법률 공포 (2025.06.21 시행)", organization: "안전보건공단", date: "2025-06-21", attachment: (<span className="flex justify-center items-center"><DownloadIcon size={19} aria-label="첨부파일 다운로드" role="button" tabIndex={0} className="cursor-pointer" /></span>) },
+{ id: 101, title: "중대산업재해 발생 시 보고 및 조치 매뉴얼(제5차 개정판)", organization: "안전보건공단", date: "2025-06-19", attachment: (<span className="flex justify-center items-center"><DownloadIcon size={19} aria-label="첨부파일 다운로드" role="button" tabIndex={0} className="cursor-pointer" /></span>) }
 ]
 
 const TAB_LABELS = ["공지사항", "자료실", "중대재해처벌법"]
@@ -90,14 +42,9 @@ setCheckedIds([])
 }
 
 const handleSearch = () => {}
-
 const handlePrint = () => window.print()
-
 const handleDelete = () => {
-if (checkedIds.length === 0) {
-alert("삭제할 항목을 선택하세요")
-return
-}
+if (checkedIds.length === 0) { alert("삭제할 항목을 선택하세요"); return }
 if (window.confirm("정말 삭제하시겠습니까?")) {
 setData(prev => prev.filter(row => !checkedIds.includes(row.id)))
 setCheckedIds([])
@@ -108,28 +55,14 @@ return (
 <section className="law-board-content w-full bg-white">
 <PageTitle>{TAB_LABELS[activeTabIdx]}</PageTitle>
 <TabMenu tabs={TAB_LABELS} activeIndex={activeTabIdx} onTabClick={handleTabClick} className="mb-6" />
-<div className="mb-4">
-<FilterBar
-keyword={keyword}
-onKeywordChange={setKeyword}
-startDate=""
-endDate=""
-onStartDate={() => {}}
-onEndDate={() => {}}
-onSearch={handleSearch}
-/>
+<div className="mb-3">
+<FilterBar keyword={keyword} onKeywordChange={setKeyword} startDate="" endDate="" onStartDate={() => {}} onEndDate={() => {}} onSearch={handleSearch} />
 </div>
 <div className="flex justify-between items-center mb-3">
 <span className="text-gray-600 text-sm">총 {data.length}건</span>
-<div className="flex justify-end gap-2">
-<Button variant="action" onClick={handlePrint} className="flex items-center gap-2">
-<Printer size={16} />
-인쇄
-</Button>
-<Button variant="action" onClick={handleDelete} className="flex items-center gap-2">
-<Trash2 size={16} />
-삭제
-</Button>
+<div className="flex justify-end gap-1">
+<Button variant="action" onClick={handlePrint} className="flex items-center gap-1"><Printer size={16} />인쇄</Button>
+<Button variant="action" onClick={handleDelete} className="flex items-center gap-1"><Trash2 size={16} />삭제</Button>
 </div>
 </div>
 <div className="overflow-x-auto bg-white">
