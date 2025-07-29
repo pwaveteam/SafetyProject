@@ -211,494 +211,481 @@ className="h-[39px] px-3 shrink-0"
 )
 
 if (field.type === "singleDatetime")
-  return (
-    <div className="flex flex-wrap items-center gap-4 w-full">
-      <div className="flex items-center gap-1 w-full md:w-auto">
-        <input
-          type="date"
-          name="startDate"
-          value={values.startDate || ""}
-          onChange={onChange}
-          className={`${COMMON_BORDER} px-2 h-[39px] ${BG_EDITABLE} w-[130px] md:w-[150px]`}
-          required
-        />
-      </div>
-      <div className="flex items-center gap-1 w-full md:w-auto">
-        <div className="relative w-[60px]">
-          <select
-            name="startHour"
-            value={values.startHour || ""}
-            onChange={onChange}
-            className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full`}
-            required
-          >
-            <option value="">시</option>
-            {[...Array(24).keys()].map(h => (
-              <option key={h} value={h}>
-                {h}시
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-        </div>
-        <div className="relative w-[60px]">
-          <select
-            name="startMinute"
-            value={values.startMinute || ""}
-            onChange={onChange}
-            className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full`}
-            required
-          >
-            <option value="">분</option>
-            {["00", "10", "20", "30", "40", "50"].map(m => (
-              <option key={m} value={m}>
-                {m}분
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-        </div>
-      </div>
+return (
+<div className="flex flex-wrap items-center gap-4 w-full">
+<div className="flex items-center gap-1 w-full md:w-auto">
+<input
+type="date"
+name="startDate"
+value={values.startDate || ""}
+onChange={onChange}
+className={`${COMMON_BORDER} px-2 h-[39px] ${BG_EDITABLE} w-[130px] md:w-[150px]`}
+required
+/>
+</div>
+<div className="flex items-center gap-1 w-full md:w-auto">
+<div className="relative w-[60px]">
+<select
+name="startHour"
+value={values.startHour || ""}
+onChange={onChange}
+className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full`}
+required
+>
+<option value="">시</option>
+{[...Array(24).keys()].map(h => (
+<option key={h} value={h}>
+{h}시
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
+<div className="relative w-[60px]">
+<select
+name="startMinute"
+value={values.startMinute || ""}
+onChange={onChange}
+className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full`}
+required
+>
+<option value="">분</option>
+{["00", "10", "20", "30", "40", "50"].map(m => (
+<option key={m} value={m}>
+{m}분
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
+</div>
 
-      <span className="text-sm md:text-[15px] text-[#333639]">~</span>
+<span className="text-sm md:text-[15px] text-[#333639]">~</span>
 
-      <div className="relative w-[60px]">
-        <select
-          name="endHour"
-          value={values.endHour || ""}
-          onChange={onChange}
-          className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full`}
-          required
-        >
-          <option value="">시</option>
-          {[...Array(24).keys()].map(h => (
-            <option key={h} value={h}>
-              {h}시
-            </option>
-          ))}
-        </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-      </div>
-      <div className="relative w-[60px]">
-        <select
-          name="endMinute"
-          value={values.endMinute || ""}
-          onChange={onChange}
-          className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full`}
-          required
-        >
-          <option value="">분</option>
-          {["00", "10", "20", "30", "40", "50"].map(m => (
-            <option key={m} value={m}>
-              {m}분
-            </option>
-          ))}
-        </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-      </div>
-    </div>
-  )
+<div className="relative w-[60px]">
+<select
+name="endHour"
+value={values.endHour || ""}
+onChange={onChange}
+className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full`}
+required
+>
+<option value="">시</option>
+{[...Array(24).keys()].map(h => (
+<option key={h} value={h}>
+{h}시
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
+<div className="relative w-[60px]">
+<select
+name="endMinute"
+value={values.endMinute || ""}
+onChange={onChange}
+className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full`}
+required
+>
+<option value="">분</option>
+{["00", "10", "20", "30", "40", "50"].map(m => (
+<option key={m} value={m}>
+{m}분
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
+</div>
+)
 
 if (field.type === "datetime")
-  return (
-    <div className="flex flex-wrap items-center gap-1 w-full">
-      <div className="relative basis-1/5">
-        <input
-          type="date"
-          name="startDate"
-          value={values.startDate || ""}
-          onChange={onChange}
-          className={`${baseInput} ${BG_EDITABLE} px-1 w-[130px] md:w-[160px]`}
-          required
-        />
-      </div>
+return (
+<div className="flex flex-wrap items-center gap-1 w-full">
+<div className="relative basis-1/5">
+<input
+type="date"
+name="startDate"
+value={values.startDate || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} px-1 w-[130px] md:w-[160px]`}
+required
+/>
+</div>
 
-      <span className="text-sm md:text-[15px] text-[#333639]">~</span>
+<span className="text-sm md:text-[15px] text-[#333639]">~</span>
 
-      <div className="relative basis-1/5 mr-4">
-        <input
-          type="date"
-          name="endDate"
-          value={values.endDate || ""}
-          onChange={onChange}
-          className={`${baseInput} ${BG_EDITABLE} px-1 w-[130px] md:w-[160px]`}
-        />
-      </div>
+<div className="relative basis-1/5 mr-4">
+<input
+type="date"
+name="endDate"
+value={values.endDate || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} px-1 w-[130px] md:w-[160px]`}
+/>
+</div>
 
-      <div className="relative basis-1/6">
-        <select
-          name="startHour"
-          value={values.startHour || ""}
-          onChange={onChange}
-          className={`${baseInput} ${BG_EDITABLE} pr-3 w-[130px] md:w-[160px]`}
-        >
-          <option value="">시 선택</option>
-          {[...Array(24).keys()].map(h => (
-            <option key={h} value={h}>
-              {h}시
-            </option>
-          ))}
-        </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-      </div>
+<div className="relative basis-1/6">
+<select
+name="startHour"
+value={values.startHour || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} pr-3 w-[130px] md:w-[160px]`}
+>
+<option value="">시 선택</option>
+{[...Array(24).keys()].map(h => (
+<option key={h} value={h}>
+{h}시
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
 
-      <div className="relative basis-1/6">
-        <select
-          name="startMinute"
-          value={values.startMinute || ""}
-          onChange={onChange}
-          className={`${baseInput} ${BG_EDITABLE} pr-3 w-[130px] md:w-[160px]`}
-        >
-          <option value="">분</option>
-          {["00", "10", "20", "30", "40", "50"].map(m => (
-            <option key={m} value={m}>
-              {m}분
-            </option>
-          ))}
-        </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-      </div>
+<div className="relative basis-1/6">
+<select
+name="startMinute"
+value={values.startMinute || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} pr-3 w-[130px] md:w-[160px]`}
+>
+<option value="">분</option>
+{["00", "10", "20", "30", "40", "50"].map(m => (
+<option key={m} value={m}>
+{m}분
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
 
-      <span className="text-sm md:text-[15px] text-[#333639]">~</span>
+<span className="text-sm md:text-[15px] text-[#333639]">~</span>
 
-      <div className="relative basis-1/6">
-        <select
-          name="endHour"
-          value={values.endHour || ""}
-          onChange={onChange}
-          className={`${baseInput} ${BG_EDITABLE} pr-3 w-[130px] md:w-[160px]`}
-        >
-          <option value="">시 선택</option>
-          {[...Array(24).keys()].map(h => (
-            <option key={h} value={h}>
-              {h}시
-            </option>
-          ))}
-        </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-      </div>
+<div className="relative basis-1/6">
+<select
+name="endHour"
+value={values.endHour || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} pr-3 w-[130px] md:w-[160px]`}
+>
+<option value="">시 선택</option>
+{[...Array(24).keys()].map(h => (
+<option key={h} value={h}>
+{h}시
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
 
-      <div className="relative basis-1/6">
-        <select
-          name="endMinute"
-          value={values.endMinute || ""}
-          onChange={onChange}
-          className={`${baseInput} ${BG_EDITABLE} pr-3 w-[130px] md:w-[160px]`}
-        >
-          <option value="">분</option>
-          {["00", "10", "20", "30", "40", "50"].map(m => (
-            <option key={m} value={m}>
-              {m}분
-            </option>
-          ))}
-        </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-      </div>
-    </div>
-  )
-  
-  if (field.type === "daterange")
-  return (
-    <div className="flex flex-wrap items-center gap-2 w-full">
-      <input
-        type="date"
-        name="startDate"
-        value={values.startDate || ""}
-        onChange={onChange}
-        className={`${COMMON_BORDER} px-2 h-[39px] ${BG_EDITABLE} w-[130px] md:w-[160px]`}
-      />
-      <span className="text-sm md:text-[15px] text-[#333639]">~</span>
-      <input
-        type="date"
-        name="endDate"
-        value={values.endDate || ""}
-        onChange={onChange}
-        className={`${COMMON_BORDER} px-2 h-[39px] ${BG_EDITABLE} w-[130px] md:w-[160px]`}
-      />
-    </div>
-  )
+<div className="relative basis-1/6">
+<select
+name="endMinute"
+value={values.endMinute || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} pr-3 w-[130px] md:w-[160px]`}
+>
+<option value="">분</option>
+{["00", "10", "20", "30", "40", "50"].map(m => (
+<option key={m} value={m}>
+{m}분
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
+</div>
+)
 
-  if (field.type === "timeRange") {
-  const adjustEnd = (deltaMin: number) => {
-    const sh = Number(values.startHour) || 0
-    const sm = Number(values.startMinute) || 0
-    let total = sh * 60 + sm + deltaMin
-    if (total < 0) total = 0
-    const newH = Math.floor(total / 60) % 24
-    const newM = total % 60
-    onChange({ target: { name: "endHour", value: String(newH) } } as any)
-    onChange({
-      target: {
-        name: "endMinute",
-        value: newM < 10 ? "0" + newM : String(newM),
-      },
-    } as any)
-  }
+if (field.type === "daterange")
+return (
+<div className="flex flex-wrap items-center gap-2 w-full">
+<input
+type="date"
+name="startDate"
+value={values.startDate || ""}
+onChange={onChange}
+className={`${COMMON_BORDER} px-2 h-[39px] ${BG_EDITABLE} w-[130px] md:w-[160px]`}
+/>
+<span className="text-sm md:text-[15px] text-[#333639]">~</span>
+<input
+type="date"
+name="endDate"
+value={values.endDate || ""}
+onChange={onChange}
+className={`${COMMON_BORDER} px-2 h-[39px] ${BG_EDITABLE} w-[130px] md:w-[160px]`}
+/>
+</div>
+)
 
-  return (
-    <div className="flex flex-col gap-2 w-full">
-      <div className="flex items-center gap-1 flex-wrap md:flex-nowrap">
-        <div className="relative w-[66px] md:w-[80px] shrink-0">
-          <select
-            name="startHour"
-            value={values.startHour || ""}
-            onChange={onChange}
-            className={`${baseInput} ${BG_EDITABLE} pr-3 w-full text-sm md:text-[15px]`}
-          >
-            <option value="">시</option>
-            {[...Array(24).keys()].map(h => (
-              <option key={h} value={h}>
-                {h}시
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-        </div>
+if (field.type === "timeRange") {
+const adjustEnd = (deltaMin: number) => {
+const sh = Number(values.startHour) || 0
+const sm = Number(values.startMinute) || 0
+let total = sh * 60 + sm + deltaMin
+if (total < 0) total = 0
+const newH = Math.floor(total / 60) % 24
+const newM = total % 60
+onChange({ target: { name: "endHour", value: String(newH) } } as any)
+onChange({
+target: {
+name: "endMinute",
+value: newM < 10 ? "0" + newM : String(newM),
+},
+} as any)
+}
 
-        <div className="relative w-[66px] md:w-[80px] shrink-0">
-          <select
-            name="startMinute"
-            value={values.startMinute || ""}
-            onChange={onChange}
-            className={`${baseInput} ${BG_EDITABLE} pr-3 w-full text-sm md:text-[15px]`}
-          >
-            <option value="">분</option>
-            {["00", "10", "20", "30", "40", "50"].map(m => (
-              <option key={m} value={m}>
-                {m}분
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-        </div>
+return (
+<div className="flex flex-col gap-2 w-full">
+<div className="flex items-center gap-1 flex-wrap md:flex-nowrap">
+<div className="relative w-[66px] md:w-[80px] shrink-0">
+<select
+name="startHour"
+value={values.startHour || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} pr-3 w-full text-sm md:text-[15px]`}
+>
+<option value="">시</option>
+{[...Array(24).keys()].map(h => (
+<option key={h} value={h}>
+{h}시
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
 
-        <span className="text-sm md:text-[15px] text-[#333639] shrink-0">~</span>
+<div className="relative w-[66px] md:w-[80px] shrink-0">
+<select
+name="startMinute"
+value={values.startMinute || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} pr-3 w-full text-sm md:text-[15px]`}
+>
+<option value="">분</option>
+{["00", "10", "20", "30", "40", "50"].map(m => (
+<option key={m} value={m}>
+{m}분
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
 
-        <div className="relative w-[66px] md:w-[80px] shrink-0">
-          <select
-            name="endHour"
-            value={values.endHour || ""}
-            onChange={onChange}
-            className={`${baseInput} ${BG_EDITABLE} pr-3 w-full text-sm md:text-[15px]`}
-          >
-            <option value="">시</option>
-            {[...Array(24).keys()].map(h => (
-              <option key={h} value={h}>
-                {h}시
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-        </div>
+<span className="text-sm md:text-[15px] text-[#333639] shrink-0">~</span>
 
-        <div className="relative w-[66px] md:w-[80px] shrink-0">
-          <select
-            name="endMinute"
-            value={values.endMinute || ""}
-            onChange={onChange}
-            className={`${baseInput} ${BG_EDITABLE} pr-3 w-full text-sm md:text-[15px]`}
-          >
-            <option value="">분</option>
-            {["00", "10", "20", "30", "40", "50"].map(m => (
-              <option key={m} value={m}>
-                {m}분
-              </option>
-            ))}
-          </select>
-          <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-        </div>
-      </div>
+<div className="relative w-[66px] md:w-[80px] shrink-0">
+<select
+name="endHour"
+value={values.endHour || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} pr-3 w-full text-sm md:text-[15px]`}
+>
+<option value="">시</option>
+{[...Array(24).keys()].map(h => (
+<option key={h} value={h}>
+{h}시
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
 
-      <div className="flex items-center">
-        <span className="text-sm md:text-[15px] font-medium text-[#6D808E]">
-          진행시간:&nbsp;
-          {(() => {
-            const sh = Number(values.startHour) || 0
-            const sm = Number(values.startMinute) || 0
-            const eh = Number(values.endHour) || sh
-            const em = Number(values.endMinute) || sm
-            const diff = eh * 60 + em - (sh * 60 + sm)
-            if (diff > 0) {
-              const h = Math.floor(diff / 60)
-              const m = diff % 60
-              return `${h}시간 ${m}분`
-            }
-            return "0시간 0분"
-          })()}
-        </span>
-      </div>
-    </div>
-  )
+<div className="relative w-[66px] md:w-[80px] shrink-0">
+<select
+name="endMinute"
+value={values.endMinute || ""}
+onChange={onChange}
+className={`${baseInput} ${BG_EDITABLE} pr-3 w-full text-sm md:text-[15px]`}
+>
+<option value="">분</option>
+{["00", "10", "20", "30", "40", "50"].map(m => (
+<option key={m} value={m}>
+{m}분
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
+</div>
+
+<div className="flex items-center">
+<span className="text-sm md:text-[15px] font-medium text-[#6D808E]">
+진행시간:&nbsp;
+{(() => {
+const sh = Number(values.startHour) || 0
+const sm = Number(values.startMinute) || 0
+const eh = Number(values.endHour) || sh
+const em = Number(values.endMinute) || sm
+const diff = eh * 60 + em - (sh * 60 + sm)
+if (diff > 0) {
+const h = Math.floor(diff / 60)
+const m = diff % 60
+return `${h}시간 ${m}분`
+}
+return "0시간 0분"
+})()}
+</span>
+</div>
+</div>
+)
 }
 
 if (field.type === "phone")
-  return (
-    <div className="flex items-center gap-2 w-full overflow-x-auto md:overflow-visible">
-      <div className="relative w-[80px] md:w-[130px] shrink-0">
-        <select
-          name="phonePrefix"
-          value={values.phonePrefix || "010"}
-          onChange={onChange}
-          className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full text-sm md:text-[15px]`}
-          {...requiredAttrs}
-        >
-          <option value="010">010</option>
-          <option value="070">070</option>
-          <option value="02">02</option>
-          <option value="031">031</option>
-          <option value="032">032</option>
-          <option value="033">033</option>
-          <option value="041">041</option>
-          <option value="042">042</option>
-          <option value="043">043</option>
-          <option value="051">051</option>
-          <option value="052">052</option>
-          <option value="053">053</option>
-          <option value="054">054</option>
-          <option value="055">055</option>
-          <option value="061">061</option>
-          <option value="062">062</option>
-          <option value="063">063</option>
-          <option value="064">064</option>
-        </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-      </div>
+return (
+<div className="flex items-center gap-2 w-full overflow-x-auto md:overflow-visible">
+<div className="relative w-[80px] md:w-[130px] shrink-0">
+<select
+name="phonePrefix"
+value={values.phonePrefix || "010"}
+onChange={onChange}
+className={`${BASE_INPUT} ${BG_EDITABLE} pr-8 w-full text-sm md:text-[15px]`}
+{...requiredAttrs}
+>
+{(field.options || [{ value: "010", label: "010" }]).map(o => (
+<option key={o.value} value={o.value}>
+  {o.label}
+</option>
+))}
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
 
-      <span className="text-sm md:text-[15px] text-[#333639]">-</span>
+<span className="text-sm md:text-[15px] text-[#333639]">-</span>
 
-      <input
-        type="text"
-        name="phoneMiddle"
-        value={values.phoneMiddle || ""}
-        onChange={onChange}
-        maxLength={4}
-        inputMode="numeric"
-        pattern="[0-9]*"
-        className={`${inputClass} w-[80px] md:w-[130px] shrink-0 text-sm md:text-[15px]`}
-        onKeyDown={e => {
-          if (
-            !/[0-9]/.test(e.key) &&
-            !["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"].includes(e.key)
-          ) {
-            e.preventDefault()
-          }
-        }}
-      />
+<input
+type="text"
+name="phoneMiddle"
+value={values.phoneMiddle || ""}
+onChange={onChange}
+maxLength={4}
+inputMode="numeric"
+pattern="[0-9]*"
+className={`${inputClass} w-[80px] md:w-[130px] shrink-0 text-sm md:text-[15px]`}
+onKeyDown={e => {
+if (
+!/[0-9]/.test(e.key) &&
+!["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"].includes(e.key)
+) {
+e.preventDefault()
+}
+}}
+/>
 
-      <span className="text-sm md:text-[15px] text-[#333639]">-</span>
+<span className="text-sm md:text-[15px] text-[#333639]">-</span>
 
-      <input
-        type="text"
-        name="phoneLast"
-        value={values.phoneLast || ""}
-        onChange={onChange}
-        maxLength={4}
-        inputMode="numeric"
-        pattern="[0-9]*"
-        className={`${inputClass} w-[80px] md:w-[130px] shrink-0 text-sm md:text-[15px]`}
-        onKeyDown={e => {
-          if (
-            !/[0-9]/.test(e.key) &&
-            !["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"].includes(e.key)
-          ) {
-            e.preventDefault()
-          }
-        }}
-      />
-    </div>
-  )
+<input
+type="text"
+name="phoneLast"
+value={values.phoneLast || ""}
+onChange={onChange}
+maxLength={4}
+inputMode="numeric"
+pattern="[0-9]*"
+className={`${inputClass} w-[80px] md:w-[130px] shrink-0 text-sm md:text-[15px]`}
+onKeyDown={e => {
+if (
+!/[0-9]/.test(e.key) &&
+!["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"].includes(e.key)
+) {
+e.preventDefault()
+}
+}}
+/>
+</div>
+)
 
-  if (field.type === "email")
-  return (
-    <div className="flex items-center gap-2 w-full overflow-x-auto md:overflow-visible">
-      <input
-        type="text"
-        name="emailId"
-        value={values.emailId || ""}
-        onChange={onChange}
-        className={`${inputClass} w-[100px] md:w-[180px] text-sm md:text-[15px] shrink-0`}
-        onKeyDown={e => {
-          if (
-            /[\sㄱ-ㅎㅏ-ㅣ가-힣]/.test(e.key) &&
-            !["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"].includes(e.key)
-          ) {
-            e.preventDefault()
-          }
-        }}
-      />
+if (field.type === "email")
+return (
+<div className="flex items-center gap-2 w-full overflow-x-auto md:overflow-visible">
+<input
+type="text"
+name="emailId"
+value={values.emailId || ""}
+onChange={onChange}
+className={`${inputClass} w-[100px] md:w-[180px] text-sm md:text-[15px] shrink-0`}
+onKeyDown={e => {
+if (
+/[\sㄱ-ㅎㅏ-ㅣ가-힣]/.test(e.key) &&
+!["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"].includes(e.key)
+) {
+e.preventDefault()
+}
+}}
+/>
 
-      <span className="text-sm md:text-[15px] text-[#333639] shrink-0">@</span>
+<span className="text-sm md:text-[15px] text-[#333639] shrink-0">@</span>
 
-      <input
-        type="text"
-        name="emailDomain"
-        value={values.emailDomain || ""}
-        onChange={onChange}
-        className={`${inputClass} w-[100px] md:w-[180px] text-sm md:text-[15px] shrink-0`}
-        onKeyDown={e => {
-          if (
-            /[\sㄱ-ㅎㅏ-ㅣ가-힣]/.test(e.key) &&
-            !["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"].includes(e.key)
-          ) {
-            e.preventDefault()
-          }
-        }}
-      />
+<input
+type="text"
+name="emailDomain"
+value={values.emailDomain || ""}
+onChange={onChange}
+className={`${inputClass} w-[100px] md:w-[180px] text-sm md:text-[15px] shrink-0`}
+onKeyDown={e => {
+if (
+/[\sㄱ-ㅎㅏ-ㅣ가-힣]/.test(e.key) &&
+!["Backspace", "ArrowLeft", "ArrowRight", "Delete", "Tab"].includes(e.key)
+) {
+e.preventDefault()
+}
+}}
+/>
 
-      <div className="relative w-[100px] md:w-[180px] shrink-0">
-        <select
-          name="emailDomainSelect"
-          value={values.emailDomainSelect || ""}
-          onChange={e => onEmailDomainSelect?.(e.target.value)}
-          className={`${baseInput} ${BG_EDITABLE} pr-8 w-full text-sm md:text-[15px]`}
-          {...requiredAttrs}
-        >
-          <option value="">직접입력</option>
-          <option value="gmail.com">gmail.com</option>
-          <option value="naver.com">naver.com</option>
-          <option value="hanmail.net">hanmail.net</option>
-          <option value="nate.com">nate.com</option>
-        </select>
-        <ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
-      </div>
-    </div>
-  )
+<div className="relative w-[100px] md:w-[180px] shrink-0">
+<select
+name="emailDomainSelect"
+value={values.emailDomainSelect || ""}
+onChange={e => onEmailDomainSelect?.(e.target.value)}
+className={`${baseInput} ${BG_EDITABLE} pr-8 w-full text-sm md:text-[15px]`}
+{...requiredAttrs}
+>
+<option value="">직접입력</option>
+<option value="gmail.com">gmail.com</option>
+<option value="naver.com">naver.com</option>
+<option value="hanmail.net">hanmail.net</option>
+<option value="nate.com">nate.com</option>
+</select>
+<ChevronDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 w-4 h-4 pointer-events-none" />
+</div>
+</div>
+)
 
-  if (field.type === "textarea")
-  return (
-    <textarea
-      name={field.name}
-      value={values[field.name] || ""}
-      onChange={onChange}
-      placeholder={field.placeholder ?? `${field.label} 입력`}
-      className={`${TEXTAREA_STYLE} text-sm md:text-base placeholder:text-sm md:placeholder:text-base`}
-    />
-  )
+if (field.type === "textarea")
+return (
+<textarea
+name={field.name}
+value={values[field.name] || ""}
+onChange={onChange}
+placeholder={field.placeholder ?? `${field.label} 입력`}
+className={`${TEXTAREA_STYLE} text-sm md:text-base placeholder:text-sm md:placeholder:text-base`}
+/>
+)
 
 if (field.type === "fileUpload")
-  return (
-    <label className={`${FILE_WRAPPER} relative p-[3px] space-x-[6px]`}>
-      <span className="h-[30px] flex items-center px-3 bg-[#EFEFEF] border border-[#999999] rounded-[3px] text-sm md:text-base text-[#333639] cursor-pointer">
-        파일 선택
-      </span>
-      <span className="text-sm md:text-base text-[#999999] flex-1 truncate">
-        {values[field.name] || "선택된 파일 없음"}
-      </span>
-      <input
-        type="file"
-        name={field.name}
-        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
-        onChange={e =>
-          onChange({
-            target: {
-              name: field.name,
-              value: (e.target as HTMLInputElement).files?.[0]?.name || "",
-            },
-          } as any)
-        }
-      />
-    </label>
-  )
+return (
+<label className={`${FILE_WRAPPER} relative p-[3px] space-x-[6px]`}>
+<span className="h-[30px] flex items-center px-3 bg-[#EFEFEF] border border-[#999999] rounded-[3px] text-sm md:text-base text-[#333639] cursor-pointer">
+파일 선택
+</span>
+<span className="text-sm md:text-base text-[#999999] flex-1 truncate">
+{values[field.name] || "선택된 파일 없음"}
+</span>
+<input
+type="file"
+name={field.name}
+className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+onChange={e =>
+onChange({
+target: {
+name: field.name,
+value: (e.target as HTMLInputElement).files?.[0]?.name || "",
+},
+} as any)
+}
+/>
+</label>
+)
 
 if (field.type === "quantity") {
 return (

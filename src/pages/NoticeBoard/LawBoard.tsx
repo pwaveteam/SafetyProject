@@ -9,16 +9,16 @@ import { DownloadIcon, Printer, Trash2 } from "lucide-react"
 
 const columns: Column[] = [
 { key: "id", label: "번호", minWidth: "50px" },
-{ key: "title", label: "제목", minWidth: "500px" },
+{ key: "title", label: "제목", minWidth: "500px", align: "left" },
 { key: "organization", label: "소관기관", minWidth: "100px" },
 { key: "date", label: "발표일", minWidth: "100px" },
 { key: "attachment", label: "첨부파일", minWidth: "60px" }
 ]
 
 const initialData: DataRow[] = [
-{ id: 103, title: "『중대재해 처벌 등에 관한 법률 시행령』 일부개정령안 행정예고", organization: "고용노동부", date: "2025-06-28", attachment: (<span className="flex justify-center items-center"><DownloadIcon size={19} aria-label="첨부파일 다운로드" role="button" tabIndex={0} className="cursor-pointer" /></span>) },
+{ id: 103, title: "『중대재해 처벌 등에 관한 법률 시행령』 일부개정령안 행정예고", organization: "고용노동부", date: "2025-06-28", attachment: (<span className="text-gray-400 text-sm text-center block">없음</span>) },
 { id: 102, title: "『중대재해 처벌법』 개정법률 공포 (2025.06.21 시행)", organization: "안전보건공단", date: "2025-06-21", attachment: (<span className="flex justify-center items-center"><DownloadIcon size={19} aria-label="첨부파일 다운로드" role="button" tabIndex={0} className="cursor-pointer" /></span>) },
-{ id: 101, title: "중대산업재해 발생 시 보고 및 조치 매뉴얼(제5차 개정판)", organization: "안전보건공단", date: "2025-06-19", attachment: (<span className="flex justify-center items-center"><DownloadIcon size={19} aria-label="첨부파일 다운로드" role="button" tabIndex={0} className="cursor-pointer" /></span>) }
+{ id: 101, title: "중대산업재해 발생 시 보고 및 조치 매뉴얼(제5차 개정판)", organization: "안전보건공단", date: "2025-06-19", attachment: (<span className="text-gray-400 text-sm text-center block">없음</span>) }
 ]
 
 const TAB_LABELS = ["공지사항", "자료실", "중대재해처벌법"]

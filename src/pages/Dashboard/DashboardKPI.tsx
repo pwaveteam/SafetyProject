@@ -16,7 +16,6 @@ const lineChartData = { labels: ["7일 전", "6일 전", "5일 전", "4일 전",
 
 const DOUGHNUT_SIZE = 280
 const KPI_COLOR = "#031E36"
-
 const chartWrapperStyle = { width: DOUGHNUT_SIZE, height: DOUGHNUT_SIZE, display: "flex", justifyContent: "center", alignItems: "center", margin: "0 auto" }
 
 const DashboardKPI: React.FC = () => {
@@ -36,10 +35,24 @@ return null
 }
 
 const getKPIValue = (key: KPIKey) => (<span className="ml-3 text-2xl font-extrabold" style={{ color: KPI_COLOR }}>{key === "approvalPending" ? approvalPendingData.pending : key === "riskEval" ? riskEvalData.data[1] + "%" : upcomingInspectionsData.data.reduce((a, b) => a + b, 0)}</span>)
-
 const getKPILabel = (key: KPIKey) => (<span className="mt-1 ml-3 text-xs font-semibold text-[#333639]">{KPI_LABELS[key]}</span>)
 
-return (<div className="flex flex-col h-full space-y-4"><div className="grid grid-cols-3 gap-3 mb-1">{(["approvalPending", "riskEval", "upcomingInspections"] as KPIKey[]).map((key) => (<div key={key} onClick={() => setSelectedKPI(key)} className="cursor-pointer rounded-[10px] p-5 flex flex-col items-start bg-gradient-to-r from-[#EEF3F9] via-[#F5F7FA] to-[#F1F3FB] transition-opacity duration-300 ease-in-out" style={{ opacity: key === selectedKPI ? 1 : 0.6 }}>{getKPIValue(key)}{getKPILabel(key)}</div>))}</div><div className="bg-white rounded-[15px] p-1 shadow-none h-[300px] border-none"><h3 className="flex justify-between items-center font-bold mb-5 text-lg sm:text-xl text-gray-900">{KPI_LABELS[selectedKPI]}</h3>{getChartContent()}</div></div>)
+return (
+<div className="flex flex-col h-full space-y-4">
+<div className="grid grid-cols-3 gap-3 mb-1">
+{(["approvalPending", "riskEval", "upcomingInspections"] as KPIKey[]).map((key) => (
+<div key={key} onClick={() => setSelectedKPI(key)} className="cursor-pointer rounded-lg p-3 flex flex-col items-start bg-gradient-to-r from-[#EEF3F9] via-[#F5F7FA] to-[#F1F3FB] transition-opacity duration-300 ease-in-out" style={{ opacity: key === selectedKPI ? 1 : 0.6 }}>
+{getKPIValue(key)}
+{getKPILabel(key)}
+</div>
+))}
+</div>
+<div className="bg-white rounded-lg p-1 shadow-none h-[300px] border-none">
+<h3 className="flex justify-between items-center font-bold mb-8 text-lg sm:text-xl text-gray-900">{KPI_LABELS[selectedKPI]}</h3>
+{getChartContent()}
+</div>
+</div>
+)
 }
 
 export default DashboardKPI

@@ -9,7 +9,7 @@ import TabMenu from "@/components/common/TabMenu"
 
 const columns: Column[] = [
 { key: "id", label: "번호", minWidth: "50px" },
-{ key: "title", label: "제목", minWidth: "300px" },
+{ key: "title", label: "제목", minWidth: "300px", align: "left" },
 { key: "author", label: "작성자", minWidth: "120px" },
 { key: "date", label: "작성일", minWidth: "120px" },
 { key: "views", label: "조회수", minWidth: "90px" },

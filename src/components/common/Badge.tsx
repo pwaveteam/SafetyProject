@@ -29,7 +29,7 @@ role={onClick ? "button" : undefined}
 tabIndex={onClick ? 0 : undefined}
 onClick={onClick}
 onKeyDown={e => { if (onClick && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); onClick() } }}
-className={`inline-flex items-center rounded-full px-3 py-1 font-medium text-sm cursor-pointer select-none text-xs md:text-sm ${colorStyles[color]} ${className}`}
+className={`inline-flex items-center rounded-full px-3 py-1 font-medium text-sm select-none text-xs md:text-sm ${colorStyles[color]} ${className}`}
 >
 {children}
 </span>

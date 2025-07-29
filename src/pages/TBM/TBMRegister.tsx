@@ -9,6 +9,7 @@ import AttendeePanel from "@/components/common/AttendeePanel"
 interface Attendee {
 name: string
 phone: string
+signature?: string
 }
 
 const riskEvaluationTemplates = ["건설기계_2025-03-30","물리적인자_2025-03-30","터널 공사_2025-03-30","기타_2025-03-30","크레인 작업_2025-03-30"]
@@ -119,8 +120,8 @@ onClose={() => setProcessListOpen(false)}
 </>
 ),
 },
-{ label: "작업내용", name: "content", type: "textarea", rows: 6 },
-{ label: "비고", name: "remark", type: "textarea", rows: 5 },
+{ label: "작업내용", name: "content", type: "textarea", className: "text-xs md:text-sm" },
+{ label: "비고", name: "remark", type: "textarea", className: "text-xs md:text-sm" },
 { label: "첨부파일", name: "fileUpload", type: "fileUpload" },
 ]
 
@@ -139,7 +140,7 @@ return (
 <section className="w-full relative" style={{ minHeight: "900px", paddingBottom: "200px" }}>
 <PageTitle>TBM 등록</PageTitle>
 <div className="flex flex-col md:flex-row gap-4 items-start">
-<div className="w-full md:w-1/2 border border-[#F3F3F3] rounded-[16px] p-3" style={{ minHeight: "700px" }}>
+<div className="w-full md:w-[60%] border border-[#F3F3F3] rounded-[16px] p-3" style={{ minHeight: "700px" }}>
 <FormScreen
 fields={fields}
 values={values}
@@ -166,7 +167,7 @@ addRiskItem={() => addRiskItem(process)}
 />
 )}
 </div>
-<aside className="w-full md:w-1/2 flex flex-col gap-6" style={{ minHeight: "700px" }}>
+<aside className="w-full md:w-[40%] flex flex-col gap-6" style={{ minHeight: "700px" }}>
 <PageTitle className="block md:hidden">참석자 목록</PageTitle>
 <div className="w-full">
 <AttendeePanel attendees={attendeesList} onAdd={handleAddAttendee} onRemove={handleRemoveAttendee} />

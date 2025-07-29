@@ -28,7 +28,13 @@ setFormData(prev => ({ ...prev, [name]: value }))
 const fields: Field[] = [
 { label: "업체명", name: "company", type: "text", placeholder: "업체명 입력" },
 { label: "평가명", name: "evaluationName", type: "text", placeholder: "평가명 입력" },
-{ label: "평가종류", name: "evaluationType", type: "select", options: [{ value: "선정평가", label: "선정평가" }, { value: "재평가", label: "재평가" }, { value: "신규평가", label: "신규평가" }, { value: "기타", label: "기타" }] },
+{ label: "평가종류", name: "evaluationType", type: "select", options: [
+    { value: "선정평가", label: "선정평가" },
+    { value: "정기평가", label: "정기평가" },
+    { value: "재평가", label: "재평가" },
+    { value: "수시평가", label: "수시평가" },
+    { value: "기타", label: "기타" }
+  ]},
 { label: "평가기간", name: "contractPeriod", type: "daterange", placeholder: "계약기간 입력" },
 { label: "외부 평가업체", name: "externalEvaluator", type: "text", placeholder: "외부 평가업체 입력" },
 { label: "평가지", name: "evaluationFile", type: "fileUpload", placeholder: "파일명 입력" },

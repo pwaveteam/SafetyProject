@@ -19,11 +19,19 @@ setFormData(prev => ({ ...prev, [name]: value }))
 }
 
 const workTypeOptions = [
-{ value: "", label: "선택" },
-{ value: "정기점검", label: "정기점검" },
-{ value: "수리", label: "수리" },
-{ value: "신규설치", label: "신규설치" },
-{ value: "해체", label: "해체" },
+{ value: "밀폐공간", label: "밀폐공간 작업" },
+{ value: "고소작업", label: "고소작업(2m 이상)" },
+{ value: "화기작업", label: "화기작업(용접·절단 등)" },
+{ value: "전기작업", label: "전기작업(고압 포함)" },
+{ value: "중량물작업", label: "중량물 취급작업(하역·운반)" },
+{ value: "크레인작업", label: "양중작업(크레인·호이스트 등)" },
+{ value: "굴착작업", label: "굴착작업(지반굴착 등)" },
+{ value: "방사선작업", label: "방사선 취급작업" },
+{ value: "화학물질작업", label: "유해화학물질 취급작업" },
+{ value: "지게차작업", label: "지게차 작업" },
+{ value: "이동식기계작업", label: "이동식 기계·설비 작업" },
+{ value: "고정식기계작업", label: "고정식 기계작업(프레스·전단기 등)" },
+{ value: "기타", label: "기타 위험작업" }
 ]
 
 const fields: Field[] = [

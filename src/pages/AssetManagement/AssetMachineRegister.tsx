@@ -12,20 +12,17 @@ const unitOptions = [
 { value: "m³", label: "m³" },
 { value: "L", label: "L" }
 ]
-
 const inspectionCycleOptions = [
 { value: "상시", label: "상시" },
-{ value: "일일", label: "일일" },
 { value: "주간", label: "주간" },
 { value: "월간", label: "월간" },
-{ value: "분기별", label: "분기별" },
-{ value: "6개월마다", label: "6개월마다" },
-{ value: "1년마다", label: "1년마다" }
+{ value: "분기", label: "분기" },
+{ value: "연간", label: "연간" }
 ]
 
 const alertTimingOptions = [
-{ value: "1개월 전", label: "1개월 전" },
-{ value: "1주일 전", label: "1주일 전" },
+{ value: "7일 전", label: "7일 전" },
+{ value: "3일 전", label: "3일 전" },
 { value: "1일 전", label: "1일 전" }
 ]
 

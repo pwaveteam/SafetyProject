@@ -18,9 +18,9 @@ const machineColumns: Column[] = [
 { key: "capacity", label: "용량/단위", minWidth: 90 },
 { key: "quantity", label: "수량", minWidth: 60 },
 { key: "location", label: "설치/작업장소", minWidth: 150 },
-{ key: "inspectionCycle", label: "점검주기", minWidth: 90 },
 { key: "inspectionDate", label: "점검일", minWidth: 110 },
 { key: "purpose", label: "용도", minWidth: 120 },
+{ key: "inspectionCycle", label: "점검주기", minWidth: 90 },
 { key: "manage", label: "관리", minWidth: 110, renderCell: () => (
 <button style={{ background: "none", border: "none", padding: 0, color: "#999999", cursor: "pointer", width: 110, textAlign: "center" }}
 onMouseEnter={e => (e.currentTarget.style.textDecoration = "underline")}

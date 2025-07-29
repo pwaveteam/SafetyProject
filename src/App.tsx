@@ -24,7 +24,6 @@ import NearMiss from "./pages/NearMiss/NearMiss"
 import SafeVoice from "./pages/NearMiss/SafeVoice"
 
 import RegularEducation from "./pages/SafetyEducation/RegularEducation"
-import SpecialEducation from "./pages/SafetyEducation/SpecialEducation"
 
 import AssetMachine from "./pages/AssetManagement/AssetMachine"
 import AssetHazard from "./pages/AssetManagement/AssetHazard"
@@ -64,7 +63,6 @@ const App: React.FC = () => (
         <Route path="/nearmiss/safevoice/*" element={<Navigate to="/nearmiss/safevoice" replace />} />
 
         <Route path="/safety-education" element={<RegularEducation />} />
-        <Route path="/specialeducation" element={<SpecialEducation />} />
 
         <Route path="/asset-management" element={<Navigate to="/asset-management/machine" replace />} />
         <Route path="/asset-management/machine" element={<AssetMachine />} />

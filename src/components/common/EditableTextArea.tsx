@@ -17,7 +17,7 @@ placeholder = "",
 className = "",
 maxLength = 100,
 disabled = false,
-rows = 3,
+rows = 1,
 }) => {
 const [textValue, setTextValue] = useState(value)
 
@@ -32,37 +32,21 @@ setTextValue(val)
 onChange(val)
 }
 
-const containerStyle: React.CSSProperties = {
-width: "100%",
-paddingTop: 5,
-}
-
-const textareaStyle: React.CSSProperties = {
-width: "96%",
-height: rows * 24,
-padding: "8px",
-fontFamily: "inherit",
-borderRadius: 8,
-border: "1px solid #A0B3C9",
-fontSize: "0.875rem",
-outline: "none",
-boxSizing: "border-box",
-backgroundColor: disabled ? "#f3f3f3" : "white",
-cursor: disabled ? "not-allowed" : "auto",
-resize: "vertical",
-textAlign: "left",
-}
-
 return (
-<div style={containerStyle}>
+<div className="w-full pt-[5px]">
 <textarea
 value={textValue}
 onChange={handleChange}
 placeholder={placeholder}
-style={textareaStyle}
-className={className}
 disabled={disabled}
-rows={1}
+rows={rows}
+className={`
+w-[100%] px-2 py-2 rounded-lg border border-[#A0B3C9]
+text-[11px] md:text-[13px] font-sans text-left outline-none resize-y
+${disabled ? "bg-[#f3f3f3] cursor-not-allowed" : "bg-white"}
+appearance-none
+${className}
+`}
 />
 </div>
 )

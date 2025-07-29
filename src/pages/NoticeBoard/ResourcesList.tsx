@@ -10,7 +10,7 @@ import ResourcesListRegister from "./ResourcesListRegister"
 
 const columns: Column[] = [
 { key: "id", label: "번호", minWidth: "50px" },
-{ key: "title", label: "자료명", minWidth: "400px" },
+{ key: "title", label: "자료명", minWidth: "400px", align: "left" },
 { key: "author", label: "작성자", minWidth: "80px" },
 { key: "date", label: "등록일", minWidth: "100px" },
 { key: "attachment", label: "첨부파일", minWidth: "60px" },
@@ -46,7 +46,6 @@ setCheckedIds([])
 
 const handleSearch = () => {}
 const handlePrint = () => window.print()
-
 const handleDelete = () => {
 if (checkedIds.length === 0) return alert("삭제할 항목을 선택하세요")
 if (window.confirm("정말 삭제하시겠습니까?")) {

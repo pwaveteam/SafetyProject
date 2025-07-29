@@ -19,16 +19,25 @@ const columns: Column[] = [
 ]
 
 const initialData: DataRow[] = [
-{ id: "3", danger: "지게차충돌", place: "산업현장", registrant: "홍길동", date: "2025-06-01", result: "채택", reason: "현장 설비 구조와 맞지 않아 기술적 보완 전에는 적용 불가" },
-{ id: "2", danger: "감전", place: "지하1층 전기실", registrant: "홍길동", date: "2025-06-01", result: "채택", reason: "공정 변경이 필요" },
-{ id: "1", danger: "추락", place: "지하3층 전기실", registrant: "홍길동", date: "2025-06-01", result: "미채택", reason: "우선순위가 높은 개선과제에 비해 효과가 낮아 후순위 지정" }
+{ id: "3", danger: "지게차충돌", place: "산업현장", registrant: "홍길동", date: "2025-06-01", result: "미채택", reason: "기존 대책으로 충분하여 개선 효과 미미" },
+{ id: "2", danger: "감전", place: "지하1층 전기실", registrant: "홍길동", date: "2025-06-01", result: "미채택", reason: "장비 교체가 선행되어야 개선 가능" },
+{ id: "1", danger: "추락", place: "지하3층 전기실", registrant: "홍길동", date: "2025-06-01", result: "미채택", reason: "우선순위가 높은 과제가 존재함" }
 ]
 
 const TAB_LABELS = ["아차사고", "안전보이스"]
 const TAB_PATHS = ["/nearmiss", "/nearmiss/safevoice"]
 
-function ResultToggle({ row, onChange }: { row: DataRow; onChange: (id: string | number, value: string) => void }) {
-const handleClick = (value: string) => { if (row.result === value) return; onChange(row.id, value) }
+function ResultToggle({ row, onChange }: { row: DataRow; onChange: (id: string | number, result: string, reason: string) => void }) {
+const handleClick = (value: string) => {
+if (row.result === value) return
+if (value === "채택") {
+const confirmText = "'채택'으로 변경 시 미처리 사유는 삭제되고 '채택 완료'로 처리됩니다.\n변경하시겠습니까?"
+if (!window.confirm(confirmText)) return
+onChange(row.id, "채택", "채택 완료")
+} else {
+onChange(row.id, "미채택", "")
+}
+}
 const isSelected = (value: string) => row.result === value
 return (
 <div className="inline-flex select-none" role="group" aria-label="처리결과 선택">
@@ -72,8 +81,8 @@ window.dispatchEvent(new PopStateEvent("popstate"))
 }
 }
 
-const handleResultChange = (id: string | number, value: string) => {
-setData((prev) => prev.map((row) => (row.id === id ? { ...row, result: value } : row)))
+const handleResultChange = (id: string | number, result: string, reason: string) => {
+setData((prev) => prev.map((row) => (row.id === id ? { ...row, result, reason } : row)))
 }
 
 const renderCell = (row: DataRow, col: Column) => {
@@ -84,7 +93,7 @@ if (col.key === "reason") return (
 const newVal = e.target.value
 setData((prev) => prev.map((r) => (r.id === row.id ? { ...r, reason: newVal } : r)))
 }} placeholder="미처리 사유 입력" disabled={row.result === "채택"} style={{
-width: "96%", padding: "8px 8px", borderRadius: 10, border: "1px solid #A0B3C9", fontSize: "0.875rem",
+width: "100%", padding: "8px 8px", borderRadius: 10, border: "1px solid #A0B3C9", fontSize: "0.875rem",
 backgroundColor: row.result === "채택" ? "#f3f3f3" : "white",
 cursor: row.result === "채택" ? "not-allowed" : "auto"
 }} />

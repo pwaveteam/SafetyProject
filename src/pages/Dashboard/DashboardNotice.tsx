@@ -44,34 +44,21 @@ const safetyVoices: NoticeItem[] = [
 
 const DashboardNotice: React.FC<DashboardNoticeProps> = ({ title, data }) => {
 const navigate = useNavigate()
-
 const handleViewAllClick = () => {
 if (title === "공지사항") navigate("/notice-board/notice")
 else if (title === "안전보이스") navigate("/nearmiss/safevoice")
 }
-
 const noticeData = data || (title === "공지사항" ? notices : title === "안전보이스" ? safetyVoices : [])
 
 return (
-<section
-className="bg-white rounded-[16px] border border-gray-200 p-6 min-h-[400px] overflow-auto"
-aria-label={title}
->
+<section className="bg-white rounded-lg border border-[#EFEFF3] p-6 min-h-[400px] overflow-auto" aria-label={title}>
 <header className="flex justify-between items-center font-bold mb-5">
 <h3 className="text-lg sm:text-xl text-gray-900">{title}</h3>
-<button
-className="text-gray-500 hover:underline text-xs sm:text-sm font-medium flex items-center gap-1"
-aria-label={`${title} 전체보기`}
-onClick={handleViewAllClick}
-type="button"
->
-전체보기 <ChevronRight size={14} />
-</button>
+<button className="text-gray-500 hover:underline text-xs sm:text-sm font-medium flex items-center gap-1" aria-label={`${title} 전체보기`} onClick={handleViewAllClick} type="button">전체보기 <ChevronRight size={14} /></button>
 </header>
 <ul className="divide-y divide-gray-200 text-gray-900 text-xs sm:text-sm font-medium">
-
 {noticeData.slice(0, 10).map(({ id, title, msg, date, time }) => (
-<li key={id} className="py-2">
+<li key={id} className="py-2 cursor-pointer hover:bg-gray-50 transition-colors" onClick={() => alert("상세보기")}>
 <div>{title ?? msg ?? ""}</div>
 <div className="text-[10px] sm:text-xs text-gray-400">{date ?? time ?? ""}</div>
 </li>
